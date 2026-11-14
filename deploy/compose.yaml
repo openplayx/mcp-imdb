@@ -1,0 +1,21 @@
+# The database (~10 GB, plus as much again while a new one is built) lives in
+# the named volume "imdb-data".
+services:
+  mcp-imdb:
+    build:
+      context: ..
+      args:
+        VERSION: ${VERSION:-dev}
+    image: ${MCP_IMDB_IMAGE:-openplayx/mcp-imdb:dev}
+    restart: unless-stopped
+    env_file: .env
+    ports:
+      - "${BIND:-0.0.0.0}:${PORT:-8810}:8810"
+    volumes:
+      - imdb-data:/data
+    stop_grace_period: 30s
+    logging:
+      driver: json-file
+      options: {max-size: "10m", max-file: "3"}
+volumes:
+  imdb-data:
