@@ -42,9 +42,11 @@ IMDb republishes seven gzip TSV files at `https://datasets.imdbws.com/` about on
 
 The optional ones can be left out with `IMDB_SKIP=akas,principals,crew,names`.
 
-Resources for the full set (Apple M-series, measured 2026-11): import ≈ 25 min of one CPU
-core and up to ~3 GB RAM, database ≈ 10 GB. During a rebuild the downloads (~2 GB) and the
-new database exist next to the old one, so plan for ~25 GB of free disk.
+Resources for the full set (measured 2026-11-15 on an Apple M-series Mac: 13.0 M titles,
+10.0 M episodes, 5.1 M alternative titles, 25.4 M principal credits, 15.8 M people): import
+≈ 5 min on one CPU core (half of it building indexes), peak ≈ 3 GB RAM, database ≈ 5 GB.
+During a rebuild the downloads (~2 GB) and the new database exist next to the old one, so
+keep ~15 GB of disk free. Queries take a few to ~50 ms.
 
 ## Run
 

@@ -8,7 +8,7 @@ auth=()
 fail=0
 check() { # name path python-expression-on-d
   local body
-  if ! body="$(curl -fsS -m 30 "${auth[@]}" "$base$2")"; then
+  if ! body="$(curl -fsS -m 30 ${auth[@]+"${auth[@]}"} "$base$2")"; then
     echo "FAIL $1 (HTTP error)"; fail=1; return
   fi
   if python3 -c "import json,sys; d=json.loads(sys.argv[1]); sys.exit(0 if ($3) else 1)" "$body"; then

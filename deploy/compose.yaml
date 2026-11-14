@@ -1,4 +1,4 @@
-# The database (~10 GB, plus as much again while a new one is built) lives in
+# The database (~5 GB; ~15 GB free needed while a new one is built) lives in
 # the named volume "imdb-data".
 services:
   mcp-imdb:

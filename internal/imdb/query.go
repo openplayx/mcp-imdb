@@ -289,7 +289,7 @@ func ftsQuery(q string) string {
 	words := strings.Fields(q)
 	for i, w := range words {
 		words[i] = `"` + strings.ReplaceAll(w, `"`, `""`) + `"`
-		if i == len(words)-1 && utf8.RuneCountInString(w) >= 3 {
+		if i == len(words)-1 && utf8.RuneCountInString(w) >= 4 {
 			words[i] += "*"
 		}
 	}
