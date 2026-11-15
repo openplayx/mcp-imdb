@@ -1,5 +1,7 @@
 # mcp-imdb
 
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+
 IMDb's official [non-commercial datasets](https://developer.imdb.com/non-commercial-datasets/)
 as an HTTP API and an MCP server, in one static Go binary (pure-Go SQLite, no cgo).
 The service keeps its own local copy and refreshes it whenever IMDb publishes new files.
@@ -12,6 +14,8 @@ The service keeps its own local copy and refreshes it whenever IMDb publishes ne
   season and episode number for episodes.
 - **Episode lists** per series and season.
 - **People**: search, birth/death years, professions, known-for titles, principal credits.
+
+Part of [OpenPlayX](https://github.com/openplayx/openplayx), but usable from any MCP client.
 
 ## How updates work
 
@@ -48,7 +52,9 @@ Resources for the full set (measured 2026-11-15 on an Apple M-series Mac: 13.0 M
 During a rebuild the downloads (~2 GB) and the new database exist next to the old one, so
 keep ~15 GB of disk free. Queries take a few to ~50 ms.
 
-## Run
+## Quick start
+
+Requirements: Go 1.26+ (or Docker), ~15 GB free disk and ~3 GB RAM for the import.
 
 ```bash
 go run ./cmd/mcp-imdb                          # :8810, data in ./data, no auth
@@ -66,9 +72,6 @@ cp deploy/env.example deploy/.env              # set API_TOKENS
 docker compose -f deploy/compose.yaml up -d --build
 TOKEN=s3cret scripts/smoke.sh http://127.0.0.1:8810   # once ready
 ```
-
-211 test host: `scripts/deploy-211.sh` (Compose project `openplayx-imdb`, port 18820,
-token in `~/openplayx-imdb/deploy/app-token.txt`).
 
 | Variable | Default | Meaning |
 |---|---|---|
@@ -172,11 +175,22 @@ internal/imdb/    TSV import into SQLite, queries, store swap, updater
 internal/mcp/     MCP tools and JSON-RPC handling (transport-agnostic)
 internal/api/     HTTP routes, auth, /api/mcp
 deploy/           compose file and env template
-scripts/          build, live smoke test, 211 deploy
+scripts/          build, live smoke test, deploy helper
 ```
 
-## Data licence
+## Contributing
 
-The datasets are © IMDb.com, Inc. and licensed for **personal and non-commercial use**
-only; see IMDb's [terms](https://developer.imdb.com/non-commercial-datasets/). This project
-contains no IMDb data; each instance downloads it itself.
+Issues and pull requests are welcome, see [CONTRIBUTING.md](CONTRIBUTING.md).
+Report security problems privately as described in [SECURITY.md](SECURITY.md).
+
+## Data licence and disclaimer
+
+This is an unofficial project, not affiliated with or endorsed by IMDb. The
+datasets are © IMDb.com, Inc. and licensed for **personal and non-commercial
+use** only; see IMDb's [terms](https://developer.imdb.com/non-commercial-datasets/).
+This project contains no IMDb data; each instance downloads it itself. Do not
+use the data, or a public instance of this service, for commercial purposes.
+
+## License
+
+The code is [MIT](LICENSE). The MIT license covers this code only, not IMDb's data.
