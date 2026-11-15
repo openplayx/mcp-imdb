@@ -175,7 +175,7 @@ internal/imdb/    TSV import into SQLite, queries, store swap, updater
 internal/mcp/     MCP tools and JSON-RPC handling (transport-agnostic)
 internal/api/     HTTP routes, auth, /api/mcp
 deploy/           compose file and env template
-scripts/          build, live smoke test, deploy helper
+scripts/          build and live smoke test
 ```
 
 ## Contributing
