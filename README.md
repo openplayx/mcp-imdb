@@ -1,5 +1,7 @@
 # mcp-imdb
 
+English | [简体中文](README.zh-CN.md)
+
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 IMDb's official [non-commercial datasets](https://developer.imdb.com/non-commercial-datasets/)
