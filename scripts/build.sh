@@ -11,7 +11,7 @@ for target in "${targets[@]}"; do
   os="${target%/*}" arch="${target#*/}"
   out="dist/mcp-imdb-${os}-${arch}"
   CGO_ENABLED=0 GOOS="$os" GOARCH="$arch" go build -trimpath \
-    -ldflags "-s -w -X main.version=${version}" -o "$out" ./cmd/mcp-imdb
+    -ldflags "-s -w -X main.version=${version}" -o "$out" ./src/cmd/mcp-imdb
   echo "$out"
 done
 (cd dist && shasum -a 256 mcp-imdb-* > SHA256SUMS)

@@ -36,9 +36,9 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/openplayx/mcp-imdb/internal/api"
-	"github.com/openplayx/mcp-imdb/internal/imdb"
-	"github.com/openplayx/mcp-imdb/internal/mcp"
+	"github.com/openplayx/mcp-imdb/src/internal/api"
+	"github.com/openplayx/mcp-imdb/src/internal/imdb"
+	"github.com/openplayx/mcp-imdb/src/internal/mcp"
 )
 
 var version = "dev"

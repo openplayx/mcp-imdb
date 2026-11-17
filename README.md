@@ -59,9 +59,9 @@ keep ~15 GB of disk free. Queries take a few to ~50 ms.
 Requirements: Go 1.26+ (or Docker), ~15 GB free disk and ~3 GB RAM for the import.
 
 ```bash
-go run ./cmd/mcp-imdb                          # :8810, data in ./data, no auth
-API_TOKENS=s3cret DATA_DIR=/var/lib/mcp-imdb go run ./cmd/mcp-imdb
-go run ./cmd/mcp-imdb update                   # one-shot download + import
+go run ./src/cmd/mcp-imdb                          # :8810, data in ./data, no auth
+API_TOKENS=s3cret DATA_DIR=/var/lib/mcp-imdb go run ./src/cmd/mcp-imdb
+go run ./src/cmd/mcp-imdb update                   # one-shot download + import
 ```
 
 Until the first import finishes, `/api/healthz` reports `"ready": false` and queries fail
@@ -172,12 +172,12 @@ scripts/build.sh linux/amd64   # static binaries in dist/
 ```
 
 ```text
-cmd/mcp-imdb/     entry point: HTTP server, `stdio`, `update`, `version`
-internal/imdb/    TSV import into SQLite, queries, store swap, updater
-internal/mcp/     MCP tools and JSON-RPC handling (transport-agnostic)
-internal/api/     HTTP routes, auth, /api/mcp
-deploy/           compose file and env template
-scripts/          build and live smoke test
+src/cmd/mcp-imdb/   entry point: HTTP server, `stdio`, `update`, `version`
+src/internal/imdb/  TSV import into SQLite, queries, store swap, updater
+src/internal/mcp/   MCP tools and JSON-RPC handling (transport-agnostic)
+src/internal/api/   HTTP routes, auth, /api/mcp
+deploy/             compose file and env template
+scripts/            build and live smoke test
 ```
 
 ## Contributing

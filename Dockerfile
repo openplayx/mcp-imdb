@@ -5,7 +5,7 @@ COPY go.mod go.sum ./
 RUN go mod download
 COPY . .
 ARG VERSION=dev
-RUN CGO_ENABLED=0 go build -trimpath -ldflags "-s -w -X main.version=${VERSION}" -o /out/mcp-imdb ./cmd/mcp-imdb
+RUN CGO_ENABLED=0 go build -trimpath -ldflags "-s -w -X main.version=${VERSION}" -o /out/mcp-imdb ./src/cmd/mcp-imdb
 
 FROM alpine:3.22
 RUN apk add --no-cache ca-certificates tzdata tini && adduser -D -H -u 10001 app \

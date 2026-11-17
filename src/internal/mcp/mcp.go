@@ -18,7 +18,7 @@ import (
 	"net/http"
 	"slices"
 
-	"github.com/openplayx/mcp-imdb/internal/imdb"
+	"github.com/openplayx/mcp-imdb/src/internal/imdb"
 )
 
 // Versions are the protocol versions this server speaks, newest first.

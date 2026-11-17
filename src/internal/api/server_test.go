@@ -9,7 +9,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/openplayx/mcp-imdb/internal/imdb"
+	"github.com/openplayx/mcp-imdb/src/internal/imdb"
 )
 
 func newServer(t *testing.T, tokens ...string) *httptest.Server {

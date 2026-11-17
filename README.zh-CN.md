@@ -42,9 +42,9 @@ IMDb 大约每天在 `https://datasets.imdbws.com/` 重新发布七个 gzip 压�
 依赖：Go 1.26+（或 Docker），导入需要约 15 GB 空闲磁盘和约 3 GB 内存。
 
 ```bash
-go run ./cmd/mcp-imdb                          # :8810，数据在 ./data，不鉴权
-API_TOKENS=s3cret DATA_DIR=/var/lib/mcp-imdb go run ./cmd/mcp-imdb
-go run ./cmd/mcp-imdb update                   # 一次性下载并导入
+go run ./src/cmd/mcp-imdb                          # :8810，数据在 ./data，不鉴权
+API_TOKENS=s3cret DATA_DIR=/var/lib/mcp-imdb go run ./src/cmd/mcp-imdb
+go run ./src/cmd/mcp-imdb update                   # 一次性下载并导入
 ```
 
 第一次导入完成前，`/api/healthz` 返回 `"ready": false`，查询会以 `not_ready` 失败（HTTP 503，带 `Retry-After`）。
@@ -144,12 +144,12 @@ scripts/build.sh linux/amd64   # 静态二进制输出到 dist/
 ```
 
 ```text
-cmd/mcp-imdb/     入口：HTTP 服务、`stdio`、`update`、`version`
-internal/imdb/    TSV 导入 SQLite、查询、数据库切换、更新器
-internal/mcp/     MCP 工具和 JSON-RPC 处理（与传输方式无关）
-internal/api/     HTTP 路由、鉴权、/api/mcp
-deploy/           compose 文件和环境变量模板
-scripts/          构建和在线冒烟测试
+src/cmd/mcp-imdb/   入口：HTTP 服务、`stdio`、`update`、`version`
+src/internal/imdb/  TSV 导入 SQLite、查询、数据库切换、更新器
+src/internal/mcp/   MCP 工具和 JSON-RPC 处理（与传输方式无关）
+src/internal/api/   HTTP 路由、鉴权、/api/mcp
+deploy/             compose 文件和环境变量模板
+scripts/            构建和在线冒烟测试
 ```
 
 ## 参与贡献

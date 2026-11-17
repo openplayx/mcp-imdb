@@ -28,8 +28,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/openplayx/mcp-imdb/internal/imdb"
-	"github.com/openplayx/mcp-imdb/internal/mcp"
+	"github.com/openplayx/mcp-imdb/src/internal/imdb"
+	"github.com/openplayx/mcp-imdb/src/internal/mcp"
 )
 
 const maxMCPBody = 64 << 10
